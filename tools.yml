@@ -1,0 +1,260 @@
+- type: entity
+  name: bone shovel
+  parent: Shovel
+  id: BoneShovel
+  description: A large tool for digging and moving dirt.
+  components:
+    - type: Tag
+      tags:
+        - Shovel
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/bone_shovel.rsi
+      state: icon
+    - type: STWeight
+      self: 5
+    - type: Item
+      size: Large
+    - type: Construction
+      graph: BoneShovel
+      node: boneshovel
+      agemin: 0
+      agemax: 8
+
+- type: entity
+  name: stone shovel
+  parent: Shovel
+  id: StoneShovel
+  description: A large tool for digging and moving dirt.
+  components:
+    - type: Tag
+      tags:
+        - Shovel
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/stone_shovel.rsi
+      state: icon
+    - type: STWeight
+      self: 5
+    - type: Item
+      size: Large
+    - type: Construction
+      graph: StoneShovel
+      node: stoneshovel
+      agemin: 0
+      agemax: 8
+
+- type: entity
+  name: bone pickaxe
+  parent: Pickaxe
+  id: BonePickaxe
+  description: A crude pickaxe, with a shaped bone head.
+  components:
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/bone_pickaxe.rsi
+      state: icon
+    - type: MeleeWeapon
+      damage:
+        types:
+          Piercing: 8
+          Blunt: 3
+    - type: Wieldable
+    - type: IncreaseDamageOnWield
+      damage:
+        groups:
+          Brute: 6
+        types:
+          Structural: 35
+    - type: STWeight
+      self: 5
+    - type: Item
+      size: Large
+    - type: Construction
+      graph: BonePickaxe
+      node: bonepickaxe
+      agemin: 0
+      agemax: 8
+
+- type: entity
+  name: bone knife
+  parent: BaseKnife
+  id: BoneKnife
+  description: A crude sharpened bone knife.
+  components:
+    - type: StrawCollector
+      minAmount: 3   # Минимально выпадет 5 штук
+      maxAmount: 6  # Максимально выпадет 10 штук
+      collectTime: 3.0
+    - type: Tag
+      tags:
+        - Knife
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 10
+    - type: Construction
+      graph: BoneKnife
+      node: boneknife
+      agemin: 0
+      agemax: 8
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/bone_knife.rsi
+      size: 2
+      state: icon
+    - type: STWeight
+      self: 1
+    - type: Item
+      size: Small
+      sprite: Civ14/Objects/StoneAge/bone_knife.rsi
+
+- type: entity
+  id: FlintAxe
+  name: flint axe
+  parent: HydroponicsToolHatchet
+  description: A crude hatchet made of sharpened flint.
+  components:
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/flint_axe.rsi
+      state: icon
+    - type: MeleeWeapon
+      attackRate: 1.1
+      damage:
+        types:
+          Blunt: 4
+          Slash: 8
+          Structural: 6
+    - type: STWeight
+      self: 3
+    - type: Item
+      size: Normal
+    - type: Clothing
+      sprite: Civ14/Objects/StoneAge/flint_axe.rsi
+      quickEquip: false
+      slots:
+        - back
+        - belt
+    - type: Construction
+      graph: FlintAxe
+      node: flintaxe
+      agemin: 0
+      agemax: 8
+
+- type: entity
+  id: BoneAxe
+  name: bone axe
+  parent: HydroponicsToolHatchet
+  description: A crude hatched made of sharpened bone.
+  components:
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/bone_axe.rsi
+      state: icon
+    - type: MeleeWeapon
+      attackRate: 1.1
+      damage:
+        types:
+          Blunt: 5
+          Slash: 8
+          Structural: 6
+    - type: STWeight
+      self: 3
+    - type: Item
+      size: Normal
+    - type: Clothing
+      sprite: Civ14/Objects/StoneAge/bone_axe.rsi
+      quickEquip: false
+      slots:
+        - back
+        - belt
+    - type: Scalpel # Shitmed
+      speed: 0.3
+    - type: BoneSaw # Shitmed
+      speed: 0.5
+    - type: SurgeryTool # Shitmed
+      startSound:
+        path: /Audio/_Shitmed/Medical/Surgery/saw.ogg
+    - type: Construction
+      graph: BoneAxe
+      node: boneaxe
+      agemin: 0
+      agemax: 8
+
+- type: entity
+  parent: BaseItem
+  name: plough
+  id: Plough
+  description: A simple wood plough. Use it on dirt to plough farming areas.
+  components:
+    - type: Sprite
+      sprite: Civ14/Objects/items.rsi
+      state: plough
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 6
+      soundHit:
+        collection: MetalThud
+    - type: STWeight
+      self: 5
+    - type: Item
+      size: Large
+      shape:
+        - 0,0,4,4 # 5x5
+    - type: PhysicalComposition
+      materialComposition:
+        Wood: 100
+    - type: Clothing
+      sprite: Civ14/Objects/items.rsi
+      quickEquip: false
+      slots:
+        - back
+    - type: Construction
+      graph: Plough
+      node: plough
+      agemin: 0
+      agemax: 8
+    - type: PloughTool
+      delay: 8.0
+
+- type: entity
+  name: hammer
+  parent: BaseItem
+  id: Hammer
+  description: Hit stuff apart with this.
+  components:
+    - type: Sprite
+      sprite: Civ14/Objects/items.rsi
+      state: hammer
+    - type: STWeight
+      self: 3
+    - type: Item
+      size: Normal
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 6
+      soundHit:
+        collection: MetalThud
+
+- type: entity
+  name: wood hammer
+  parent: Hammer
+  id: WoodHammer
+  components:
+    - type: Sprite
+      sprite: Civ14/Objects/StoneAge/wood_hammer.rsi
+      state: icon
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 3
+    - type: Tag
+      tags:
+        - Wrench
+    - type: Tool
+      qualities:
+        - Anchoring
+      useSound:
+        path: /Audio/Items/ratchet.ogg
+    - type: Construction
+      graph: WoodHammer
+      node: woodhammer
+      agemin: 0
+      agemax: 8

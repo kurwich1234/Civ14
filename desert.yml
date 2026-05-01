@@ -1,0 +1,27 @@
+- type: entity
+  parent: BaseTree
+  id: TreeCactus
+  name: cactus
+  components:
+    - type: Sprite
+      sprite: Civ14/Flora/bigtrees.rsi
+      state: cactus
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      # Мы УБРАЛИ damageModifierSet, чтобы он не мешал
+    - type: Destructible
+      id: Destructible
+      thresholds:
+        - trigger: !type:DamageTrigger
+          damage: 2000 # Ставим ОГРОМНОЕ здоровье
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound:
+                path: /Audio/Effects/tree_fell.ogg
+            - !type:SpawnEntitiesBehavior
+              spawn:
+                MaterialWoodPlank1:
+                  min: 5
+                  max: 10
+            - !type:DoActsBehavior
+              acts: ["Destruction"]
